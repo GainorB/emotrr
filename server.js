@@ -1,26 +1,17 @@
-require('dotenv').config(); // SUPPORT .ENV FILES
-const express = require('express'); // BRING IN EXPRESS
-const app = express(); // INITILIZE APP
-const path = require('path');
+require('dotenv').config();
+const express = require('express');
+const app = express();
 const bodyParser = require('body-parser'); 
-const articles = require('./routes/articlesRoutes'); // ARTICLES ROUTES
+const http = require('http');
+const server = http.createServer(app);
+const port = process.env.PORT || '3000';
+const logger = require('morgan');
 
-const http = require('http'); // CORE MODULE, USED TO CREATE THE HTTP SERVER
-const server = http.createServer(app); // CREATE HTTP SERVER USING APP
-const port = process.env.PORT || '3000'; // INITIALIZE DEFAULT PORT OR PORT FROM ENVIRONMENT VARIABLE
+const index = require('./routes/indexRoutes');
 
-const logger = require('morgan'); // TERMINAL LOGGER: SHOWS THE ROUTE AND STATUS CODE FOR EVERY REQUEST
-
-// VIEW ENGINE SETUP
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
-
-app.use(logger('dev')); // USE MORGAN
-app.use(bodyParser.urlencoded({ extended: false })); // PARSE application/x-www-form-urlencoded
-app.use(bodyParser.json()); // PARSE application/json
-
-// USE STATIC FILES (CSS, JS, IMAGES)
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(logger('dev'));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 // CORS
 app.all('/*', (req, res, next) => {
@@ -34,19 +25,14 @@ app.all('/*', (req, res, next) => {
 app.disable('x-powered-by');
 
 // ROUTES
-articles(app); // ARTICLES ROUTES
+// index(app);
 
 /*
 * START SERVER
 */
 
-// SET THE PORT
 app.set('port', port);
-
-// LISTEN ON SPECIFIED PORT
 server.listen(port);
-
-// LOG WHICH PORT THE SERVER IS RUNNING ON
 console.log('Server listening on port ' + port);
 
 // ERROR HANDLER
