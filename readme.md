@@ -6,6 +6,19 @@ An application built with a React frontend combining 2 API's to produce an appli
 
 The IBM Watson™ Tone Analyzer service uses linguistic analysis to detect emotional, social, and language tones in written text. The service can analyze tone at both the document and sentence levels. You can use the service to understand how your written communications are perceived and then to improve the tone of your communications.
 
+### TECH STACK
+
+1. Node.js
+2. Express.js
+3. React.js
+4. MongoDB
+
+### MISC TECH
+
+1. Mongoose
+2. watson-developer-cloud
+3. mocha
+
 ### DOCUMENTATION
 1. Twitter API:
 2. IBM Watson Tone Analyzer: 

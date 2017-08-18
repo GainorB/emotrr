@@ -1,7 +1,7 @@
 {
   "name": "node-express-mvc",
   "version": "1.0.0",
-  "description": "Building a Node/Express app following MVC design pattern using PostgreSQL",
+  "description": "",
   "main": "server.js",
   "scripts": {
     "start": "node server",
@@ -11,12 +11,16 @@
   "author": "Gainor Bostwick",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.17.2",
     "dotenv": "^4.0.0",
     "express": "^4.15.3",
+    "jsonwebtoken": "^7.4.3",
     "mocha": "^3.5.0",
     "mongoose": "^4.11.7",
     "morgan": "^1.8.2",
+    "passport": "^0.4.0",
+    "passport-jwt": "^3.0.0",
     "watson-developer-cloud": "^2.38.0"
   },
   "devDependencies": {
